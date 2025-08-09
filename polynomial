@@ -1,0 +1,71 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMd+2tdZR3BMq4ZAc/6my59",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/majay00/ajay1/blob/main/polynomial\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "3ElcxBLyaKhl",
+        "outputId": "d899a3c3-50aa-42ef-f6f5-a27523332e7e"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "P(3) = 2.666666666666667\n"
+          ]
+        }
+      ],
+      "source": [
+        "def lagrange_interpolation(x_values, y_values, x):\n",
+        "    total = 0\n",
+        "    n = len(x_values)\n",
+        "\n",
+        "    for i in range(n):\n",
+        "        term = y_values[i]\n",
+        "        for j in range(n):\n",
+        "            if i != j:\n",
+        "                term *= (x - x_values[j]) / (x_values[i] - x_values[j])\n",
+        "        total += term\n",
+        "    return total\n",
+        "\n",
+        "# Example usage\n",
+        "x_vals = [1, 2, 4]\n",
+        "y_vals = [2, 3, 1]\n",
+        "\n",
+        "x_to_eval = 3\n",
+        "result = lagrange_interpolation(x_vals, y_vals, x_to_eval)\n",
+        "print(f\"P({x_to_eval}) = {result}\")\n"
+      ]
+    }
+  ]
+}
